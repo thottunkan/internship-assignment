@@ -4,12 +4,34 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="justify-content: space-between;display:flex;align-items: center;">
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="/admin/products">All products</a>
       <a class="nav-item nav-link" href="/admin/allusers">All users</a>
       <a class="nav-item nav-link " href="/admin/allorders">All Orders</a>
-      <a class="nav-item nav-link " href="addproduct">Add Product</a>
+      <a class="nav-item nav-link " href="admin/addproduct">Add Product</a>
+    </div>
+
+    <div>
+        <div class="dropdown">
+            <button
+              class="btn btn-primary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-mdb-toggle="dropdown"
+              aria-expanded="false"
+            >{{#if userdetails}}
+               {{!-- {{userdetails.name}} --}}
+               Account
+              {{else}}
+                Account
+              {{/if}}
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item" href="/user/signout">Signout</a></li>
+              
+            </ul>
+      </div>
     </div>
   </div>
 </nav>

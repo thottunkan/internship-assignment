@@ -21,15 +21,15 @@
               data-mdb-toggle="dropdown"
               aria-expanded="false"
             >{{#if userdetails}}
-               {{userdetails.name}}
+               {{!-- {{userdetails.name}} --}}
+               Account
               {{else}}
                 Account
               {{/if}}
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="/user/signout">Signout</a></li>
+              
             </ul>
       </div>
     </div>

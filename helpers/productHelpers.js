@@ -1,4 +1,5 @@
 var db = require("../config/connection")
+const { v4: uuid } = require('uuid');
 
 module.exports = {
     addProduct:(product,callback)=>{
@@ -32,6 +33,23 @@ module.exports = {
         return new Promise(async (resolve,reject)=>{
             let cartitems = await db.getDatabase().collection("cart").find().toArray()
             resolve(cartitems)
+        })
+    },
+    purchaseItem:(cartid)=>{
+        return new Promise( async(resolve,reject)=>{
+            let cartdata = await db.getDatabase().collection("cart").find({cartid:cartid}).toArray()
+            var puchasedata = {
+                orderid:uuid(),
+                orderstatus:"",
+                deliveryperson:"",
+                cartdetails:cartdata
+            }
+            db.getDatabase().collection('order').insertOne(puchasedata).then((purchaseinfo)=>{
+                db.getDatabase().collection("cart").deleteOne({cartid:cartid}).then((data)=>{
+                    resolve(purchaseinfo.insertedId)
+                })
+                
+            })
         })
     }
 }

@@ -3,7 +3,7 @@ var router = express.Router();
 var connection = require("../config/connection")
 var productHelper = require("../helpers/productHelpers")
 const { v4: uuid } = require('uuid');
-const { merge } = require('../app');
+const { merge, route } = require('../app');
 
 var userobj ={};
 
@@ -39,6 +39,8 @@ router.get("/login",(req,res,next)=>{
   res.render("../views/login.hbs",{normal:true})
 })
 
+
+//login route
 router.post("/login",  (req,res,next)=>{
   const credentials = {
     email:req.body.email,
@@ -58,6 +60,11 @@ router.post("/login",  (req,res,next)=>{
     } else if(usertype === "customer"){
       req.session.user = data;
       res.redirect("home")
+    }
+    else{
+      req.session.user = data;
+      //res.send("admin")
+      res.redirect("admin")
     }
   });
   console.log(result)
@@ -98,7 +105,17 @@ router.get("/cart",(req,res,next)=>{
 
 router.get("/viewproduct",(req,res,next)=>{
   res.render("../views/viewproduct.hbs",{user:true})
- })
+ });
+
+ //purchase route
+router.get("/purchase/:cartid",(req,res,next)=>{
+  console.log(req.path)
+  productHelper.purchaseItem(req.params.cartid).then((data)=>{
+    console.log("purchaseid "+ data)
+    res.redirect("user/cart")
+  })
+  
+});
 
  //addto cart route
  router.get("/viewproduct/addtocart/:productid",(req,res,next)=>{
@@ -125,7 +142,7 @@ router.get("/admin/addproduct",(req,res,next)=>{
     console.log("hai")
 })
 
-router.post("/admin/addproduct",(req,res,next)=>{
+router.post("admin/addproduct",(req,res,next)=>{
   let image = req.files.image;
   console.log(image)//image is the name of the field
   var prodobj = {
@@ -156,6 +173,10 @@ router.get("/viewproduct/:productid",(req,res,next)=>{
   })
 })
 
-
+router.get("/signout",(req,res)=>{
+  req.session.destroy()  ;
+  res.clearCookie('connect.sid')
+  res.redirect("login")
+})
 
 module.exports = router;
