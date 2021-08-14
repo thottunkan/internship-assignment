@@ -1,5 +1,4 @@
-{{!-- <h1>{{title}}</h1>
-<p>Welcome to {{title}}</p> --}}
+
 <style>
 .grid-container {
   display: grid;
@@ -18,83 +17,35 @@
   
 }
 </style>
+<h1>{{data.name}}</h1>
 
 <div class="container grid-container">
   
   
-  {{!-- {{#each products}}
+  {{#each products}}
   <div class="grid-item">
       
-      <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">{{this.name}}</h5>
-                <p class="card-text">{{this.desc}}</p>
-                <a href="#" class="btn btn-primary">Go Preview</a>
-            </div>
+     <div class="card" style="width: 20rem;">
+        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+          <img
+            src="/product-images/{{this._id}}.jpg"
+            class="img-fluid"
+          />
+          <a href="#!">
+            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+          </a>
         </div>
+        <div class="card-body">
+          <h5 class="card-title">{{this.productname}} Rs {{this.productprice}}/-</h5>
+          <p class="card-text">
+           {{this.productdesc}}
+          </p>
+          <a href="viewproduct/{{this.productid}}" class="btn btn-primary">Read more</a>
+        </div>
+      </div>
        
   </div>
-  {{/each}}  --}}
+  {{/each}}  
 
-      <div class="card" style="width: 20rem;">
-  <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-    <img
-      src="https://mdbootstrap.com/img/new/standard/nature/111.jpg"
-      class="img-fluid"
-    />
-    <a href="#!">
-      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-    </a>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">
-      Some quick example text to build on the card title and make up the bulk of the
-      card's content.
-    </p>
-    <a href="#!" class="btn btn-primary">Button</a>
-  </div>
-</div>
-
- <div class="card" style="width: 20rem;">
-  <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-    <img
-      src="https://mdbootstrap.com/img/new/standard/nature/111.jpg"
-      class="img-fluid"
-    />
-    <a href="#!">
-      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-    </a>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">
-      Some quick example text to build on the card title and make up the bulk of the
-      card's content.
-    </p>
-    <a href="#!" class="btn btn-primary">Button</a>
-  </div>
-</div>
-
- <div class="card" style="width: 20rem;">
-  <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-    <img
-      src="https://mdbootstrap.com/img/new/standard/nature/111.jpg"
-      class="img-fluid"
-    />
-    <a href="#!">
-      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-    </a>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">
-      Some quick example text to build on the card title and make up the bulk of the
-      card's content.
-    </p>
-    <a href="#!" class="btn btn-primary">Button</a>
-  </div>
-</div>
 
  </div>
