@@ -1,0 +1,32 @@
+<center>
+<div class="container ">
+  
+  
+  {{#each product}}
+  <div class="">
+      
+     <div class="card" >
+        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+          <img
+            src="/product-images/{{this._id}}.jpg"
+            class="img-fluid"
+          />
+          <a href="#!">
+            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{this.productname}} Rs {{this.productprice}}/-</h5>
+          <p class="card-text">
+           {{this.productdesc}}
+          </p>
+          <a href="addtocart/{{this.productid}}" class="btn btn-primary">ADD TO CART</a>
+        </div>
+      </div>
+       
+  </div>
+  {{/each}}  
+
+
+ </div>
+ </center>

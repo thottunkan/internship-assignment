@@ -1,0 +1,51 @@
+
+<style>
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: transparent;
+  padding: 10px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+ 
+  padding: 20px;
+  
+  text-align: center;
+}
+@media screen and (min-width: 750px) {
+  
+}
+</style>
+<h1>{{data.name}}</h1>
+
+<div class="container grid-container">
+  
+  
+  {{#each products}}
+  <div class="grid-item">
+      
+     <div class="card" style="width: 20rem;">
+        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+          <img
+            src="/product-images/{{this._id}}.jpg"
+            class="img-fluid"
+          />
+          <a href="#!">
+            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{this.productname}} Rs {{this.productprice}}/-</h5>
+          <p class="card-text">
+           {{this.productdesc}}
+          </p>
+          <a href="viewproduct/{{this.productid}}" class="btn btn-primary">Read more</a>
+        </div>
+      </div>
+       
+  </div>
+  {{/each}}  
+
+
+ </div>
