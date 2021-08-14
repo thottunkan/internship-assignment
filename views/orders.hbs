@@ -33,38 +33,61 @@
               <b>Delivery person</b>
           </td>
           <td>
-             <button class="btn btn-dark">Ooder Status</button>
+             <b>order status</b>
           </td>
           <td>
-             <button class="btn btn-dark">Assign</button>
+            
           </td>
 
 
       </th>
-      {{#each cartitems}}
+      {{#each orders}}
         <tr>
             <td>
                 <div class="bg-image hover-overlay ripple">
-                    <img src="../product-images/{{this.productdetails.[0]._id}}.jpg" class="img-fluid" width="50" height="50 " />
+                    <img src="../product-images/{{this.cartdetails.[0].productdetails.[0]._id}}.jpg" class="img-fluid" width="50" height="50 " />
                     <a href="#!">
                         <div class="mask" style="background-color: rgba(57, 192, 237, 0.2);"></div>
                     </a>
                 </div>
             </td>
             <td>
-                {{this.productdetails.[0].productname}}
+                {{this.cartdetails.[0].productdetails.[0].productname}}
             </td>
             <td>
-                {{this.productdetails.[0].productprice}}
+                {{this.cartdetails.[0].productdetails.[0].productprice}}
             </td>
             <td>
-                {{this.productdetails.[0].productdesc}}
+                {{this.cartdetails.[0].productdetails.[0].productdesc}}
             </td>
             <td>
-                <a href="purchase/{{this.cartid}}"  class="btn btn-primary">Purchase</a>
+               {{this.cartdetails.[0].userdetails.[0].name}}
             </td>
             <td>
-                <button type="button" class="btn btn-danger">Delete</button>
+               {{this.cartdetails.[0].userdetails.[0].email}}
+            </td>
+            <td>
+               {{this.cartdetails.[0].userdetails.[0].location}}
+            </td>
+            <td>
+               {{this.cartdetails.[0].userdetails.[0].address}}
+            </td>
+            <td>
+                {{this.cartdetails.[0].productdetails.[0].address}}
+            </td>
+            <td>
+                    <select name="" id="">
+                        <option value="">-choose-</option>
+                        {{#each deliveryguys}}
+                            <option value="">{{this.name}}</option>
+                        {{/each}}
+                    </select>
+            </td>
+            <td>
+                <b>{{this.orderstatus}}</b>
+            </td>
+            <td>
+                 <button class="btn btn-dark">Assign</button>
             </td>
         </tr>
       {{/each}}

@@ -169,7 +169,11 @@ router.post("admin/addproduct",(req,res,next)=>{
 
 router.get("/admin/allorders",(req,res,next)=>{
    productHelper.getAllOrders().then(function(orders){
-     res.render("../views/orders.hbs",{admin:true,title:"orders",orders:orders})
+     productHelper.getAllDeliveryGuy().then((deliveryguys)=>{
+       console.log(deliveryguys)
+      res.render("../views/orders.hbs",{admin:true,title:"orders",orders:orders,deliveryguys:deliveryguys})
+     })
+     
    })
 })
 

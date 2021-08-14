@@ -57,5 +57,17 @@ module.exports = {
             let orderdata = await db.getDatabase().collection("order").find().toArray()
             resolve(orderdata)
         })
+    },
+    getAllUsers:()=>{
+        return new Promise( async(resolve,reject)=>{
+            let users = await db.getDatabase().collection("users").find().toArray()
+            resolve(users)
+        })
+    },
+    getAllDeliveryGuy:()=>{
+        return new Promise( async(resolve,reject)=>{
+            let users = await db.getDatabase().collection("users").find({usertype:"deliveryguy"}).toArray()
+            resolve(users)
+        })
     }
 }
