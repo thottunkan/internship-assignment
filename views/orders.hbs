@@ -1,0 +1,74 @@
+
+<div class="container-fluid ">
+    <br>
+  <h2>Orders</h2>
+  <br>
+  <table class="table table-hover">
+      <th>
+          <td>
+              <b>Product Name</b>
+          </td>
+          <td>
+              <b>Product Price</b>
+          </td>
+          <td>
+              <b>Product Description</b>
+          </td>
+          <td>
+              <b>User Name</b>
+          </td>
+          <td>
+              <b>Email</b>
+          </td>
+          <td>
+              <b>User location</b>
+          </td>
+          <td>
+              <b>User Address</b>
+          </td>
+          <td>
+              <b>Product Address</b>
+          </td>
+          <td>
+              <b>Delivery person</b>
+          </td>
+          <td>
+             <button class="btn btn-dark">Ooder Status</button>
+          </td>
+          <td>
+             <button class="btn btn-dark">Assign</button>
+          </td>
+
+
+      </th>
+      {{#each cartitems}}
+        <tr>
+            <td>
+                <div class="bg-image hover-overlay ripple">
+                    <img src="../product-images/{{this.productdetails.[0]._id}}.jpg" class="img-fluid" width="50" height="50 " />
+                    <a href="#!">
+                        <div class="mask" style="background-color: rgba(57, 192, 237, 0.2);"></div>
+                    </a>
+                </div>
+            </td>
+            <td>
+                {{this.productdetails.[0].productname}}
+            </td>
+            <td>
+                {{this.productdetails.[0].productprice}}
+            </td>
+            <td>
+                {{this.productdetails.[0].productdesc}}
+            </td>
+            <td>
+                <a href="purchase/{{this.cartid}}"  class="btn btn-primary">Purchase</a>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+      {{/each}}
+  </table>
+
+
+ </div>
